@@ -2,7 +2,7 @@
   "name": "xenia-vue-plugin",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "bundle.js",
   "scripts": {
     "build": "webpack build --config ./webpack.config.js",
     "pack": "cp package.json dist/package.json && cd dist && npm pack && rm package.json && mv *.tgz ..",
