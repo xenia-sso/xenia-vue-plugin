@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
     "strict": true,
-    "target": "ES2015",
-    "lib": ["es2016", "dom", "es5"],
+    "module": "CommonJS",
+    "target": "ES5",
+    "lib": ["es5", "es6", "dom"],
     "moduleResolution": "Node",
-    "declaration": true,
-    "declarationMap": true,
-    "declarationDir": "dist"
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "dist"
   },
   "include": ["./src/**/*.ts"],
   "exclude": ["node_modules", "dist"]

@@ -13,10 +13,17 @@ module.exports = {
     ],
   },
   output: {
+    library: {
+      type: "commonjs2",
+    },
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
   },
   resolve: {
-    extensions: [".ts"],
+    extensions: [".tsx", ".ts", ".js"],
+  },
+  externals: {
+    vue: "vue",
+    "vue-router": "vue-router",
   },
 };
