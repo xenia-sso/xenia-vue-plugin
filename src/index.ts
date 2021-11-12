@@ -130,7 +130,7 @@ export default {
   },
 };
 
-const loginUsingSSO = async () => {
+const login = async () => {
   const { codeChallenge } = await api.call<{ codeChallenge: string }>("/oauth2/code-challenge", {
     method: "POST",
   });
@@ -153,6 +153,10 @@ const loginUsingSSO = async () => {
   window.location.replace(url);
 };
 
+const logout = () => {
+  void pluginOptions.router.push("/logout");
+};
+
 const call = api.call;
 
-export { call, loginUsingSSO, useCurrentUser };
+export { call, login, logout, useCurrentUser };
