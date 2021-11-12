@@ -11,7 +11,7 @@ Xenia plugin for Vue 3.
 - Authenticated calls
 - Current user variable
 - Global navigation guard based on routes meta
-- Automatic redirect after login and logout
+- Automatic redirection after login and logout
 
 ## Configuration
 
