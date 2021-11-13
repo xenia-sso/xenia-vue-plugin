@@ -8,6 +8,10 @@ export class CallError extends Error {
     super(error.message);
     this.name = error.name;
     this.status = error.status;
+
+    // Required for ES5 target
+    // https://www.dannyguo.com/blog/how-to-fix-instanceof-not-working-for-custom-errors-in-typescript/
+    Object.setPrototypeOf(this, CallError.prototype);
   }
 }
 
