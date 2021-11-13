@@ -1,7 +1,13 @@
-import { ref, watch } from "vue";
+import { ref, watch, readonly, computed } from "vue";
 import { api, User } from "./api";
 
 const currentUser = ref<User>();
+
+export const setCurrentUser = (val: User | undefined) => {
+  currentUser.value = val;
+};
+
+const isLoggedIn = computed(() => !!currentUser.value);
 
 const onCurrentUserChangeCallbacks: ((user: User | undefined) => void | Promise<void>)[] = [];
 const onCurrentUserChange = (cb: (user: User | undefined) => void | Promise<void>) => {
@@ -30,7 +36,8 @@ export const silentLogin = async () => {
 };
 
 export const useCurrentUser = () => ({
-  currentUser,
+  currentUser: readonly(currentUser),
+  isLoggedIn,
   isSilentlyLoggingIn,
   onCurrentUserChange,
 });

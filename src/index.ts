@@ -1,6 +1,6 @@
 import { Router, RouteLocationRaw, RouteLocationNormalized, NavigationGuardNext } from "vue-router";
 import { CallError, UNAUTHORIZED_STATUS, api } from "./api";
-import { useCurrentUser, silentLogin } from "./current-user";
+import { useCurrentUser, silentLogin, setCurrentUser } from "./current-user";
 
 interface Options {
   clientBackendBaseUrl?: string;
@@ -23,7 +23,7 @@ interface RouteAuthOptions {
   loginErrorRedirectRoute?: RouteLocationRaw;
 }
 
-const { currentUser, onCurrentUserChange } = useCurrentUser();
+const { isLoggedIn, onCurrentUserChange } = useCurrentUser();
 
 let pluginOptions: Options;
 export default {
@@ -40,7 +40,7 @@ export default {
       beforeEnter: async (to, from, next) => {
         try {
           await api.logout();
-          currentUser.value = undefined;
+          setCurrentUser(undefined);
           next(options.routesAuth?.postLogoutRedirectRoute || "/auth/profile");
         } catch (e) {
           if (!(e instanceof CallError)) {
@@ -73,8 +73,8 @@ export default {
         }
 
         try {
-          const { currentUser } = useCurrentUser();
-          currentUser.value = await api.loginUsingAuthCode(code, codeChallenge);
+          const user = await api.loginUsingAuthCode(code, codeChallenge);
+          setCurrentUser(user);
           next(options.routesAuth?.postLoginRedirectRoute || "/auth/profile");
         } catch {
           next("/");
@@ -94,7 +94,7 @@ export default {
           return;
         }
 
-        if (!currentUser.value) {
+        if (!isLoggedIn.value) {
           const url = options.routesAuth?.unauthorizedRedirectRoute || "/";
           next(`${url.toString()}?redirect=${btoa(to.fullPath)}`);
           return;
@@ -121,8 +121,8 @@ export default {
     });
 
     void api.onCannotRefreshToken(() => {
-      if (currentUser.value) {
-        currentUser.value = undefined;
+      if (isLoggedIn.value) {
+        setCurrentUser(undefined);
       }
     });
 
