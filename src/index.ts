@@ -139,7 +139,9 @@ const login = async () => {
     pluginOptions.oauth2.loginPageUrl +
     "?" +
     "response_type=code&" +
-    "scope=openid&" +
+    "scope=" +
+    encodeURIComponent("openid email profile") +
+    "&" +
     "code_challenge_method=S256&" +
     "redirect_uri=" +
     encodeURIComponent(pluginOptions.oauth2.redirectUri || `${window.location.origin}/#/oauth2/cb`) +
