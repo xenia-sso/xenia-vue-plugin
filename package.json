@@ -1,6 +1,6 @@
 {
   "name": "xenia-vue-plugin",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/bundle.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "pack": "npm pack",
     "prettier": "prettier src/**/*.ts --write"
   },
-  "author": "",
+  "author": "Gaetan Chambouvet",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.16.0",
