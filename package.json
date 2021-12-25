@@ -1,5 +1,5 @@
 {
-  "name": "xenia-vue-plugin",
+  "name": "@xenia-sso/xenia-vue-plugin",
   "version": "0.0.1",
   "description": "",
   "main": "dist/bundle.js",
