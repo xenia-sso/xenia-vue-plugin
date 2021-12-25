@@ -6,7 +6,8 @@
   "scripts": {
     "build": "rm -rf dist && npm-dts generate --output dist/bundle.d.ts && webpack build --config webpack.config.js",
     "pack": "npm pack",
-    "prettier": "prettier src/**/*.ts --write"
+    "prettier": "prettier src/**/*.ts --write",
+    "postversion": "git push --follow-tags"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
