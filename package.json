@@ -8,6 +8,12 @@
     "pack": "npm pack",
     "prettier": "prettier src/**/*.ts --write"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "url": "git://github.com/xenia-sso/xenia-vue-plugin.git"
+  },
   "author": "Gaetan Chambouvet",
   "license": "MIT",
   "devDependencies": {
