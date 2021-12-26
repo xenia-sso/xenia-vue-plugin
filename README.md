@@ -16,7 +16,7 @@ Xenia plugin for Vue 3.
 ## Configuration
 
 ```javascript
-import xenia from "xenia-vue-plugin";
+import xenia from "@xenia-sso/vue-plugin";
 
 app.use(xenia, {
   // Client back-end base URL
@@ -57,7 +57,7 @@ app.use(xenia, {
 
 ```typescript
 import { defineComponent } from "vue";
-import { login, logout, call, useCurrentUser } from "xenia-vue-plugin";
+import { login, logout, call, useCurrentUser } from "@xenia-sso/vue-plugin";
 
 export default defineComponent({
   setup() {
